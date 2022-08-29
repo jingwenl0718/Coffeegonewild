@@ -1,0 +1,95 @@
+* {
+	vertical-align: baseline;
+	font-weight: inherit;
+	font-family: sans-serif;
+	font-style: inherit;
+	font-size: 100%;
+	border: 0 none;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	background-color: none;
+	}
+
+/* index.html */
+#logo {
+	border-radius: 50%;
+	width: 130px;
+}
+
+.navbar {
+	height: 50px;
+	/* display: flex;
+	align-items: center; */
+}
+
+.navbar_index {
+	color: #905f41;
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+.navbar_right {
+	height:30px
+}
+
+.index_video {
+	/* width: 800px; */
+	height: 500px;
+	/* margin-left: -25px */
+}
+
+.index_bottom {
+	color: #905f41
+}
+
+.search_button {
+	height: 40px
+}
+
+.serach_header {
+	text-align: center;
+}
+
+#comment_list {
+	list-style-type: none;
+}
+
+/* recipes_all.html */
+/* .header {
+	margin: 50px, 0px;
+} */
+
+.header_main {
+	color: #905f41;
+}
+
+.individual_recipe {
+	width: 400px;
+	height: 400px;
+	border-radius: 50%;
+}
+
+.recipe_one {
+	width: 400px
+}
+
+/* recipe_search.html */
+.search_form {
+	padding: 20px 20px 20px 60px
+}
+
+/* recipe_one */
+.comment {
+	color: #905f41
+}
+
+.comment_label {
+	font-size: larger;
+}
+
+.comment_box {
+	border: 1px solid #905f41;
+	width: 800px;
+	height: 150px;
+}
