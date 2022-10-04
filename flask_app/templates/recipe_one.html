@@ -35,12 +35,11 @@
 
     <!-- body -->
     <div class="recipe_one_body">
-        <div class="d-flex justify-content-start mt-3 title">
-        <h2>{{recipe.title}}</h2>
-        </div>
-        <div class="display-flex">
-            <img id="rating" src="/static/img/rating.png" alt="rating"> | 
-            <h6>REVIEWS</h6>
+        <div class="d-flex justify-content-start mt-3 align-items-center">
+            <h2 class="mr-4">{{recipe.title}}</h2>
+            <img id="rating" src="/static/img/rating.png" alt="rating">
+            <h5 class="ml-2"> | </h5>
+            <h6 class="ml-3">REVIEWS</h6>
         </div>
         <!-- <div class="d-flex justify-content-end">
             {% if ('list_of_recipe_ids') in session %}
@@ -50,13 +49,13 @@
             {% endif %}        
             <a class = "btn btn-primary ml-3 mr-5" href="/coffeegonewild/home">Home</a>
         </div> -->
-        <div class="display-flex">
+        <div class="d-flex">
             <img class="my-3 recipe_image2" src="{{recipe.image_link}}" alt="recipe image">
-            <p>{{recipe.description}}</p>
+            <h4 class="recipe_description">{{recipe.description}}</h4>
         </div>
-        
-        <div class="container col-7 comment">
-            <h3>Here's what others have said: </h3>
+        <hr id="page_breaker"/>
+        <div class="comment mt-5">
+            <h3 class="text-center mb-3 comment_title"><img class="mr-3" id="coffeeCupIcon" src="/static/img/coffeeCupIcon.png" alt="coffee cup icon"/>Other Coffee Enthusiasts Have Said <img class="ml-2" id="coffeeCupIcon" src="/static/img/coffeeCupIcon.png" alt="coffee cup icon"/></h3>
             <div>
                 <ul id="comment_list">
                     {% for comment in recipe.list_of_comments %}

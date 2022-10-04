@@ -103,11 +103,11 @@
 
 /* ------recipe_one.html------ */
 .recipe_one_body {
-	padding-left: 220px;
+	padding: 0px 180px;
 }
 
 .recipe_image2 {
-	width: 400px;
+	width: 500px;
 	height: auto;
 }
 
@@ -115,6 +115,35 @@
 #rating {
 	width: 200px;
 }
+
+.recipe_description {
+	margin-top: 40px;
+	margin-left: 50px;
+	font-weight: lighter;
+	color: #673399;
+	font-style: italic;
+}
+
+
+.comment {
+	color: #905f41;
+}
+
+.comment_label {
+	font-size: larger;
+}
+
+.comment_title {
+	font-weight: heavier;
+}
+
+.comment_box {
+	border: 1px solid #905f41;
+	width: 800px;
+	height: 150px;
+}
+
+
 
 /* recipe_search.html */
 .search_form {
@@ -128,16 +157,3 @@
 }
 
 /* recipe_one */
-.comment {
-	color: #905f41
-}
-
-.comment_label {
-	font-size: larger;
-}
-
-.comment_box {
-	border: 1px solid #905f41;
-	width: 800px;
-	height: 150px;
-}
