@@ -11,6 +11,10 @@ def index():
     # print(session)
     # if "user_id" in session:
     #     return redirect('/welcome')
+    return render_template("splash.html")
+
+@app.route("/coffeegonewild/home")
+def home():
     return render_template("index.html")
 
 # REGISTER/CREATE A USER
@@ -56,10 +60,10 @@ def login():
         return redirect('/coffeegonewild/login_form')
     session['user_id'] = user_from_db.id
     session['user_name'] = user_from_db.user_name 
-    return redirect("/coffeegonewild")
+    return redirect("/coffeegonewild/home")
 
 # LOGOUT
 @app.route("/coffeegonewild/logout")
 def logout():
     session.clear()
-    return redirect('/coffeegonewild')
+    return redirect('/coffeegonewild/home')

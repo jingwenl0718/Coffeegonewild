@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>welcome_page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../static/css/bootstrap5.css"> -->
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
@@ -14,8 +13,11 @@
         <img class = "my-1 mx-auto" id = "logo" src="../static/images/logo.png" alt="image_of_logo">
     </div>
     <div class="row">
-        <div class="navbar mx-auto col-8 d-flex justify-content-between">
-            <a class="navbar_index" href="/coffeegonewild/all_recipes">Show All Recipes</a>
+        <div class="navbar mx-auto my-0 col-8 d-flex justify-content-between">
+            <div>
+                <a class="navbar_index mr-5" href="/coffeegonewild/all_recipes">Show All Recipes</a>
+                <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="../static/images/search_icon.png" /></a>
+            </div>
             {% if "user_id" not in session %}
             <div class="d-flex flex-row-reverse navbar_right">
                 <a class="navbar_index ml-5" href="/coffeegonewild/login_form">Login</a>
@@ -29,7 +31,6 @@
             {% endif %}
         </div>
     </div>
-    <!-- https://stackoverflow.com/questions/56242193/play-random-video-on-page-with-javascript -->
     <div class="row">
         <div class="mx-auto index_video"> <a id="myVideoTag"> </a>
             <!-- <video class="mx-auto" src="../static/videos/frenchpress.mp4" type="video/mp4" autoplay loop muted></video>
@@ -49,9 +50,9 @@
                 //# create video element to append into above <a> tag           
                 tmpElement = document.createElement( "video");
                 // tmpElement.setAttribute("controls", "true" );
-                tmpElement.setAttribute("width", "900px");
-                tmpElement.setAttribute("src", mySrc);
                 tmpElement.setAttribute("muted", true);
+                tmpElement.setAttribute("width", "1000px");
+                tmpElement.setAttribute("src", mySrc);
                 tmpElement.setAttribute("autoplay", true);
                 tmpElement.setAttribute("loop", true);
                 
@@ -61,11 +62,14 @@
             </script>
         </div>
     </div>
-    <div class="text-center mt-1 mt-3 mb-5">
-        <h2 class="text-alignment-center index_bottom">What are you in the mood for today?</h2>
-        <a class="btn btn-success" href="/coffeegonewild/search">Get Started</a>
+    <div class="text-center mt-3 mb-5">
+        <h1 class="text-alignment-center index_bottom">What are you in the mood for today?</h1>
+        <a class="btn btn-success mt-1 index_bottom_button" href="/coffeegonewild/search">Get Started  <img id="coffeeCupIcon" src="../static/img/coffeeCupIcon.png" alt="coffee cup icon"/> </a>
     </div>
-    <script src="../js/script.js"></script>
+    <div class="text-center footer">
+        <p>© 2022 Coffeegonewild by Jingwen L.</p>
+    </div>
+    <script src="/static/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    

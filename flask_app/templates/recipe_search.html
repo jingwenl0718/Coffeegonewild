@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="row mb-3">
-        <img class = "my-1 mx-auto" id = "logo" src="../static/images/logo.png" alt="image_of_logo">
+        <a href="/coffeegonewild/home" class = "my-1 mx-auto"><img id = "logo" src="/static/images/logo.png" alt="image_of_logo"></a>
     </div>
-    <div class="border border-dark col-xl-4 container search_form">
-        <h1>Let's narrow down</h1>
+    <div class="border border-dark col-xl-5 container search_form">
+        <h1 class="ml-5">Let us narrow down</h1>
         {% for message in get_flashed_messages(category_filter=['notfound']) %}
         <p class="ml-5 text-warning">{{message}}</p>
         {% endfor %}
@@ -21,7 +21,7 @@
         <p class="ml-5 text-danger" class="text-danger">{{message}}</p>
         {% endfor %}
         <form class="form" action="/coffeegonewild/Iamready", method= "post">
-            <div class="form-group mt-3">
+            <div class="form-group ml-5 mt-3">
                 <h5>Temperature</h5>
                 <input type="radio" name="temperature" value="0">
                 <label class="mr-5" for="temperature">Hot</label>
@@ -30,33 +30,36 @@
                 <input type="radio" name="temperature" value="2">
                 <label for="temperature">Either</label>
             </div>
-            <div class="form-group">
+            <div class="form-group ml-5">
                 <h5>Creaminess</h5>
                 <input type="radio" name="creaminess" value="1">
                 <label class="mr-5" for="creaminess">Creamy</label>
                 <input type="radio" name="creaminess" value="0">
                 <label for="creaminess">Non-creamy</label>
             </div>
-            <div class="form-group">
+            <div class="form-group ml-5">
                 <h5>Sweetness</h5>
                 <input type="radio" name="sweetness" value="1">
                 <label class="mr-5" for="sweetness">Sweet</label>
                 <input type="radio" name="sweetness" value="0">
                 <label for="sweetness">Non-sweet</label>
             </div>
-            <div class="form-group">
+            <div class="form-group ml-5">
                 <h5>With foam</h5>
                 <input type="radio" name="with_foam" value="1">
                 <label class="mr-5" for="with_foam">Yes</label>
                 <input type="radio" name="with_foam" value="0">
                 <label for="with_foam">No</label>
             </div>
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-success mr-3">I am ready!</button>
-                <a class = "btn btn-primary search_button mr-5" href="/coffeegonewild">Home</a>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-warning mr-3">I am ready!</button>
+                <a class="btn btn-warning mr-3" href="/coffeegonewild/home">Home</a>
             </div>
             
         </form>
+    </div>
+    <div class="text-center mt-5 footer">
+        <p>© 2022 Coffeegonewild by Jingwen L.</p>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

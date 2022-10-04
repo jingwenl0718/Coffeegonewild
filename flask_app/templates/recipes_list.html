@@ -9,18 +9,37 @@
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-    <div class="d-flex justify-content-center align-items-center my-3">
-        <h1 class="header_main">Here are the coffee recipes for you</h1>
-        <a class = "btn btn-warning text-white ml-5" href="/coffeegonewild/search">Back</a>
-        <a class = "btn btn-primary ml-5" href="/coffeegonewild">Home</a>
+    <div class="row">
+        <img class = "my-1 mx-auto" id = "logo" src="/static/images/logo.png" alt="image_of_logo">
     </div>
-    <div class="d-flex ml-5 pl-5 row justify-content-center">
+    <div class="navbar mx-auto my-0 col-8 d-flex justify-content-between">
+        <div>
+            <a class="navbar_index mr-5" href="/coffeegonewild/all_recipes">Show All Recipes</a>
+            <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="/static/images/search_icon.png" /></a>
+        </div>
+        {% if "user_id" not in session %}
+        <div class="d-flex flex-row-reverse navbar_right">
+            <a class="navbar_index ml-5" href="/coffeegonewild/login_form">Login</a>
+            <a class="navbar_index" href="/coffeegonewild/register">Register</a>
+        </div>
+        {% else %}
+        <div class="d-flex flex-row-reverse navbar_right">
+            <a class="navbar_index ml-5" href="/coffeegonewild/logout">Logout</a>
+            <p class="navbar_index">Welcome, {{session['user_name']}}</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="d-flex row justify-content-center">
         {% for recipe in recipes %}
-        <div class="col-5 mb-3  justify-content-right">
-            <a class="d-block" href="/coffeegonewild/viewrecipe/{{recipe.id}}"><img class="individual_recipe" src="{{recipe.image_link}}" alt="recipe image"></a>
-            <a class="d-flex justify-content-center" href="/coffeegonewild/viewrecipe/{{recipe.id}}">{{recipe.title}}</a>
+        <div class="mb-3 ml-5 mr-5 recipe_card">
+            <a href="/coffeegonewild/viewrecipe/{{recipe.id}}"><img class="recipe_image" src="{{recipe.image_link}}" alt="recipe image"></a>
+            <a href="/coffeegonewild/viewrecipe/{{recipe.id}}"><h3 class="recipe_title d-flex justify-content-center mt-3">{{recipe.title}}</h3></a>
+            <h4 class="ml-3 mr-3 recipe_description">{{recipe.description}}</h4>
         </div>
         {% endfor %}
+    </div>
+    <div class="text-center footer mt-5">
+        <p>© 2022 Coffeegonewild by Jingwen L.</p>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

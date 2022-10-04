@@ -9,40 +9,74 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <div class="d-flex justify-content-center mt-3">
-        <h1>{{recipe.title}}</h1>
+    <!-- logo -->
+    <div class="row">
+        <a href="/coffeegonewild/home" class = "my-1 mx-auto"><img id = "logo" src="/static/images/logo.png" alt="image_of_logo"></a>
     </div>
-    <div class="d-flex justify-content-end">
-        {% if ('list_of_recipe_ids') in session %}
-        <a class = "btn btn-warning text-white ml-3" href="/coffeegonewild/searchresult">Back</a>
-        {% else %}        
-        <a class = "btn btn-warning text-white ml-3" href="/coffeegonewild/all_recipes">Back</a>
-        {% endif %}        
-        <a class = "btn btn-primary ml-3 mr-5" href="/coffeegonewild">Home</a>
-    </div>
-    <div class="d-flex justify-content-center mb-3">
-        <img class="recipe_one" src="{{recipe.image_link}}" alt="recipe image">
-    </div>
-    <div class="container col-7 d-flex justify-content-center">
-        <p>{{recipe.description}}</p>
-    </div>
-    <div class="container col-7 comment">
-        <h3>Here's what others have said: </h3>
+
+    <!-- header/nav-bar -->
+    <div class="navbar mx-auto my-0 col-8 d-flex justify-content-between">
         <div>
-            <ul id="comment_list">
-                {% for comment in recipe.list_of_comments %}
-                <li>{{comment.commenter.user_name}} said: {{comment.content}}</li>
-                {% endfor %}
-            </ul>
-        <form class="form" onsubmit="add_comment(event)" id="add_form">
-            <div class="d-flex align-items-start">
-                <label class="comment_label mr-3" for="content">Comment</label>
-                <textarea class="comment_box" name="content" id="content"></textarea>
-            </div>
-            <button class="btn btn-success my-3">Add Comment</button>
-        </form>
+            <a class="navbar_index mr-5" href="/coffeegonewild/all_recipes">Show All Recipes</a>
+            <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="/static/images/search_icon.png" /></a>
+        </div>
+        {% if "user_id" not in session %}
+        <div class="d-flex flex-row-reverse navbar_right">
+            <a class="navbar_index ml-5" href="/coffeegonewild/login_form">Login</a>
+            <a class="navbar_index" href="/coffeegonewild/register">Register</a>
+        </div>
+        {% else %}
+        <div class="d-flex flex-row-reverse navbar_right">
+            <a class="navbar_index ml-5" href="/coffeegonewild/logout">Logout</a>
+            <p class="navbar_index">Welcome, {{session['user_name']}}</p>
+        </div>
+        {% endif %}
     </div>
-    <script src="/js/script.js"></script>
+
+    <!-- body -->
+    <div class="recipe_one_body">
+        <div class="d-flex justify-content-start mt-3 title">
+        <h2>{{recipe.title}}</h2>
+        </div>
+        <div class="display-flex">
+            <img id="rating" src="/static/img/rating.png" alt="rating"> | 
+            <h6>REVIEWS</h6>
+        </div>
+        <!-- <div class="d-flex justify-content-end">
+            {% if ('list_of_recipe_ids') in session %}
+            <a class = "btn btn-warning text-white ml-3" href="/coffeegonewild/searchresult">Back</a>
+            {% else %}        
+            <a class = "btn btn-warning text-white ml-3" href="/coffeegonewild/all_recipes">Back</a>
+            {% endif %}        
+            <a class = "btn btn-primary ml-3 mr-5" href="/coffeegonewild/home">Home</a>
+        </div> -->
+        <div class="display-flex">
+            <img class="my-3 recipe_image2" src="{{recipe.image_link}}" alt="recipe image">
+            <p>{{recipe.description}}</p>
+        </div>
+        
+        <div class="container col-7 comment">
+            <h3>Here's what others have said: </h3>
+            <div>
+                <ul id="comment_list">
+                    {% for comment in recipe.list_of_comments %}
+                    <li>{{comment.commenter.user_name}} said: {{comment.content}}</li>
+                    {% endfor %}
+                </ul>
+            <form class="form" onsubmit="add_comment(event)" id="add_form">
+                <div class="d-flex align-items-start">
+                    <label class="comment_label mr-3" for="content">Comment</label>
+                    <textarea class="comment_box" name="content" id="content"></textarea>
+                </div>
+                <button class="btn btn-success my-3">Add Comment</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-5 footer">
+        <p>© 2022 Coffeegonewild by Jingwen L.</p>
+    </div>
+    <script src="/static/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 

@@ -32,13 +32,11 @@ from flask_app.models.comment_model import Comment
 
 @app.route("/api/coffeegonewild/add_comment", methods=["POST"])
 def api_create_comment():
-    # print(request.form)
     if not "user_id" in session:
-        # return redirect('/coffeegonewild/login_form')
+        return redirect('/coffeegonewild/login_form')
         # return render_template("login.html")
         # return redirect("/coffeegonewild" )
-        return ValueError('no user id yet!')
-
+        # return ValueError('no user id yet!')
     data = {
         'content': request.form['content'],
         'user_id': session['user_id'],
