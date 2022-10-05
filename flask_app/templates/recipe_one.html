@@ -31,43 +31,72 @@
             <p class="navbar_index">Welcome, {{session['user_name']}}</p>
         </div>
         {% endif %}
+        
     </div>
+   
 
     <!-- body -->
     <div class="recipe_one_body">
+        <hr>
         <div class="d-flex justify-content-start mt-3 align-items-center">
-            <h2 class="mr-4">{{recipe.title}}</h2>
+            <h2 class="mr-4 recipe_title">{{recipe.title}}</h2>
             <img id="rating" src="/static/img/rating.png" alt="rating">
             <h5 class="ml-2"> | </h5>
             <h6 class="ml-3">REVIEWS</h6>
         </div>
-        <!-- <div class="d-flex justify-content-end">
-            {% if ('list_of_recipe_ids') in session %}
-            <a class = "btn btn-warning text-white ml-3" href="/coffeegonewild/searchresult">Back</a>
-            {% else %}        
-            <a class = "btn btn-warning text-white ml-3" href="/coffeegonewild/all_recipes">Back</a>
-            {% endif %}        
-            <a class = "btn btn-primary ml-3 mr-5" href="/coffeegonewild/home">Home</a>
-        </div> -->
         <div class="d-flex">
             <img class="my-3 recipe_image2" src="{{recipe.image_link}}" alt="recipe image">
             <h4 class="recipe_description">{{recipe.description}}</h4>
         </div>
-        <hr id="page_breaker"/>
+        <hr/>
         <div class="comment mt-5">
             <h3 class="text-center mb-3 comment_title"><img class="mr-3" id="coffeeCupIcon" src="/static/img/coffeeCupIcon.png" alt="coffee cup icon"/>Other Coffee Enthusiasts Have Said <img class="ml-2" id="coffeeCupIcon" src="/static/img/coffeeCupIcon.png" alt="coffee cup icon"/></h3>
             <div>
-                <ul id="comment_list">
-                    {% for comment in recipe.list_of_comments %}
-                    <li>{{comment.commenter.user_name}} said: {{comment.content}}</li>
+                <ul class="list-unstyled" id="comment_list">
+                     {% for comment in recipe.list_of_comments %}
+                    <li>
+                        <span>{{comment.rating}}</span>
+                        <span id="comment_date">{{comment.created_at.strftime('%m/%d/%Y')}}</span><br/>
+                        <span id="comment_name">{{comment.name}}</span><br/>
+                        <span id="comment_content">{{comment.content}}</span><br/>
+                        <span id="posted_by">Posted by </span><span id="commenter_name">{{comment.commenter.user_name}}</span>
+                        <hr>
+                     </li>
                     {% endfor %}
                 </ul>
-            <form class="form" onsubmit="add_comment(event)" id="add_form">
-                <div class="d-flex align-items-start">
-                    <label class="comment_label mr-3" for="content">Comment</label>
-                    <textarea class="comment_box" name="content" id="content"></textarea>
+            </div>
+            <form class="form mt-3" onsubmit="add_comment(event)" id="add_form">
+                <label class="form-label h5 review_form" for="name">Title:</label>
+                <input type="text" class="form-control" name="name"></input>
+                <label class="form-label h5 mt-3 review_form" for="content">Description:</label>
+                <textarea class="form-control" name="content"></textarea>
+                <label class="form-label h5 mt-3 review_form" for="rating">Rating: </label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="inlineCheckbox1" value="1">
+                        <label class="form-check-label h5" for="inlineCheckbox1">1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="inlineCheckbox2" value="2">
+                        <label class="form-check-label h5" for="inlineCheckbox2">2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="inlineCheckbox3" value="3">
+                        <label class="form-check-label h5" for="inlineCheckbox3">3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="inlineCheckbox4" value="4">
+                        <label class="form-check-label h5" for="inlineCheckbox4">4</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="inlineCheckbox5" value="5">
+                        <label class="form-check-label h5" for="inlineCheckbox5">5</label>
+                    </div>
                 </div>
-                <button class="btn btn-success my-3">Add Comment</button>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-danger my-3">ADD RATING & REVIEW</button>
+                    <h5 class="ml-5 note"> Note: please <a href="/coffeegonewild/login_form">login</a>/<a href="/coffeegonewild/register">register</a> before leaving a review!</h5>
+                </div>
             </form>
         </div>
     </div>

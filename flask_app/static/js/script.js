@@ -2,9 +2,10 @@ function add_comment(event) {
     event.preventDefault()
     console.log('form submitted')
     let comment_form = document.querySelector("#add_form")
-    console.log(comment_form)
+    // console.log(comment_form)
     let comment_list = document.querySelector("#comment_list")
     let formData = new FormData(comment_form)
+    console.log(formData)
     fetch('/api/coffeegonewild/add_comment', {
         method: 'post',
         body: formData
@@ -13,7 +14,13 @@ function add_comment(event) {
     .then(data => {
         console.log(data)
         comment_list.innerHTML += `
-        <li>${data.user_name} said: ${data.form.content}</li>
+        <li>
+        <span><em>just now</em></span><br/>
+        <span>${data.form.name}</span><br/>
+        <span>${data.form.content}</span><br/>
+        <span>Posted by </span><span>${data.user_name}</span>
+        <hr>
+        </li>
         `    
         comment_form.reset()
     })

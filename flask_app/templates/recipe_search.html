@@ -22,40 +22,76 @@
         {% endfor %}
         <form class="form" action="/coffeegonewild/Iamready", method= "post">
             <div class="form-group ml-5 mt-3">
-                <h5>Temperature</h5>
-                <input type="radio" name="temperature" value="0">
-                <label class="mr-5" for="temperature">Hot</label>
-                <input type="radio" name="temperature" value="1">
-                <label class="mr-5" for="temperature">Cold</label>
-                <input type="radio" name="temperature" value="2">
-                <label for="temperature">Either</label>
+                <h4 class="form-label search_title">Temperature</h4>
+                <!-- <input type="radio" name="temperature" value="0">
+                <label class="mr-5" for="temperature">Hot</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="temperature" id="inlineCheckbox1" value="0">
+                    <label class="form-check-label h5 mr-5 search_content" for="temperature">Hot</label>
+                </div>
+                <!-- <input type="radio" name="temperature" value="1">
+                <label class="mr-5" for="temperature">Cold</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="temperature" id="inlineCheckbox2" value="1">
+                    <label class="form-check-label h5 mr-5 search_content" for="temperature">Cold</label>
+                </div>
+                <!-- <input type="radio" name="temperature" value="2">
+                <label for="temperature">Either</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="temperature" id="inlineCheckbox3" value="2">
+                    <label class="form-check-label h5 mr-5 search_content" for="temperature">Either</label>
+                </div>
             </div>
             <div class="form-group ml-5">
-                <h5>Creaminess</h5>
-                <input type="radio" name="creaminess" value="1">
-                <label class="mr-5" for="creaminess">Creamy</label>
-                <input type="radio" name="creaminess" value="0">
-                <label for="creaminess">Non-creamy</label>
+                <h4 class="form-label search_title">Creaminess</h4>
+                <!-- <input type="radio" name="creaminess" value="1">
+                    <label class="mr-5" for="creaminess">Creamy</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="creaminess" id="inlineCheckbox1" value="0">
+                    <label class="form-check-label h5 mr-5 search_content" for="creaminess">Non-creamy</label>
+                </div>
+                <div class="form-check form-check-inline search_content">
+                    <input class="form-check-input" type="radio" name="creaminess" id="inlineCheckbox2" value="1">
+                    <label class="form-check-label h5 mr-5 search_content" for="creaminess">Creamy</label>
+                </div>
+                <!-- <input type="radio" name="creaminess" value="0">
+                <label for="creaminess">Non-creamy</label> -->
             </div>
             <div class="form-group ml-5">
-                <h5>Sweetness</h5>
-                <input type="radio" name="sweetness" value="1">
-                <label class="mr-5" for="sweetness">Sweet</label>
-                <input type="radio" name="sweetness" value="0">
-                <label for="sweetness">Non-sweet</label>
+                <h4 class="form-label search_title">Sweetness</h4>
+                <!-- <input type="radio" name="sweetness" value="1">
+                <label class="mr-5" for="sweetness">Sweet</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sweetness" id="inlineCheckbox1" value="0">
+                    <label class="form-check-label h5 mr-5 search_content" for="sweetness">Non-sweet</label>
+                </div>
+                <div class="form-check form-check-inline search_content">
+                    <input class="form-check-input" type="radio" name="sweetness" id="inlineCheckbox2" value="1">
+                    <label class="form-check-label h5 mr-5 search_content" for="sweetness">Sweet</label>
+                </div>
+                <!-- <input type="radio" name="sweetness" value="0">
+                <label for="sweetness">Non-sweet</label> -->
+                
             </div>
             <div class="form-group ml-5">
-                <h5>With foam</h5>
-                <input type="radio" name="with_foam" value="1">
-                <label class="mr-5" for="with_foam">Yes</label>
-                <input type="radio" name="with_foam" value="0">
-                <label for="with_foam">No</label>
+                <h4 class="form-label search_title">With foam</h4>
+                <!-- <input type="radio" name="with_foam" value="1">
+                <label class="mr-5" for="with_foam">Yes</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="with_foam" id="inlineCheckbox1" value="1">
+                    <label class="form-check-label h5 mr-5 search_content" for="with_foam">Yes</label>
+                </div>
+                <!-- <input type="radio" name="with_foam" value="0">
+                <label for="with_foam">No</label> -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="with_foam" id="inlineCheckbox2" value="0">
+                    <label class="form-check-label h5 mr-5 search_content" for="with_foam">No</label>
+                </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-warning mr-3">I am ready!</button>
-                <a class="btn btn-warning mr-3" href="/coffeegonewild/home">Home</a>
+                <button class="btn btn-warning mr-3 search_button">I am ready!</button>
+                <a class="btn btn-warning mr-3 search_button" href="/coffeegonewild/home">Home</a>
             </div>
-            
         </form>
     </div>
     <div class="text-center mt-5 footer">

@@ -38,7 +38,10 @@ def api_create_comment():
         # return redirect("/coffeegonewild" )
         # return ValueError('no user id yet!')
     data = {
+        'name': request.form['name'],
         'content': request.form['content'],
+        'rating': request.form['rating'],
+        # 'created_at': request.form['created_at'],
         'user_id': session['user_id'],
         'recipe_id': session['recipe_id']
     }

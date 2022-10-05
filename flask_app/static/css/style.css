@@ -2,7 +2,7 @@
 	vertical-align: baseline;
 	font-weight: inherit;
 	font-family: sans-serif;
-	font-style: inherit;
+	/* font-style: inherit; */
 	font-size: 100%;
 	border: 0 none;
 	outline: 0;
@@ -102,8 +102,13 @@
 
 
 /* ------recipe_one.html------ */
-.recipe_one_body {
+.recipe_one_body{
 	padding: 0px 180px;
+}
+
+.recipe_title {
+	color: #8E3200;
+	font-size: 28px;
 }
 
 .recipe_image2 {
@@ -120,16 +125,39 @@
 	margin-top: 40px;
 	margin-left: 50px;
 	font-weight: lighter;
-	color: #673399;
+	color: #A62B2A;
 	font-style: italic;
 }
 
-
 .comment {
-	color: #905f41;
+	color: #964800;
+	/* color: #632626; */
 }
 
-.comment_label {
+#comment_date {
+	font-size: 15px;
+	font-weight: lighter;
+}
+
+#comment_name {
+	font-size: 22px;
+	color: black;
+	/* margin-bottom: 80px; */
+}
+
+#comment_content {
+	color: black;
+}
+
+#posted_by {
+	font-size: 15px;
+	font-weight: lighter;
+}
+
+#commenter_name {
+	font-size: 15px;
+}
+/* .comment_label {
 	font-size: larger;
 }
 
@@ -141,8 +169,15 @@
 	border: 1px solid #905f41;
 	width: 800px;
 	height: 150px;
+} */
+
+.note {
+	font-weight: lighter;
+	color:#673399;
+	font-style: italic;
 }
 
+/* star rating */
 
 
 /* recipe_search.html */
@@ -156,4 +191,15 @@
 	color: white;
 }
 
-/* recipe_one */
+.search_title {
+	font-weight: 500;
+}
+
+.search_content {
+	font-weight: 300;
+}
+
+.search_button {
+	color:white;
+}
+
