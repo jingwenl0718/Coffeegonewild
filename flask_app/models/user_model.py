@@ -45,7 +45,6 @@ class User:
     # Validator
     @staticmethod
     def validate(data):
-        # can use print(data) to check what kind of data we get back
         is_valid = True
         if len(data['first_name']) < 2:
             is_valid = False
@@ -81,7 +80,7 @@ class User:
                 'email': data['email']
             }
             potential_user = User.get_by_email(data3)
-            if potential_user: #if we have a user, don't let them register with this email.
+            if potential_user:
                 is_valid = False
                 flash("Email already in DB, hope it's you...", 'reg')
         if len(data['password']) < 8:

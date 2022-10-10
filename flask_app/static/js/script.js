@@ -1,65 +1,44 @@
 function add_comment(event) {
     event.preventDefault()
-    console.log('form submitted')
     let comment_form = document.querySelector("#add_form")
-    // console.log(comment_form)
     let comment_list = document.querySelector("#comment_list")
     let formData = new FormData(comment_form)
-    console.log(formData)
     fetch('/api/coffeegonewild/add_comment', {
         method: 'post',
         body: formData
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        comment_list.innerHTML += `
-        <li>
-        <span><em>just now</em></span><br/>
-        <span>${data.form.name}</span><br/>
-        <span>${data.form.content}</span><br/>
-        <span>Posted by </span><span>${data.user_name}</span>
-        <hr>
-        </li>
-        `    
-        comment_form.reset()
+        if (data.msg == "NoUserError") {
+            alert("Please log in or register. Thank you!")
+            window.location = "/coffeegonewild/login_form";
+        }
+        else {
+            let today = new Date()
+            let dd = String(today.getDate()).padStart(2, '0')
+            let mm = String(today.getMonth() + 1).padStart(2, '0')
+            let yyyy = today.getFullYear();
+            today =  mm + '/' + dd + '/' + yyyy;
+            comment_list.innerHTML += `
+            <li>
+                <div style="display: flex">
+                    <div class="mr-3" id="starbackground">
+                        <div style="width: calc(20px * ${data.form.rating}); background-color: gold">
+                            <img id="star-rating" src="/static/img/stars.png" alt="${data.form.rating}" title="${data.form.rating}"/>
+                        </div>
+                    </div>                        
+                    <span id="comment_date">${today}</span>
+                </div>  
+                <span id="comment_name">${data.form.name}</span><br/>
+                <span id="comment_content">${data.form.content}</span><br/>
+                <span id="posted_by">Posted by </span><span id="commenter_name">${data.user_name}</span>
+                <hr>
+            </li>
+            `    
+            comment_form.reset()
+        }
     })
     .catch(err => {
-        console.log(err)
-        alert("Please login/register first. Thank you!")
+        alert("All fields are required. Thank you!")
     })
 }
-
-
-
-// function add_comment(event) {
-//     event.preventDefault()
-//     console.log('form submitted')
-//     let comment_form = document.querySelector("#add_form")
-//     let comment_list = document.querySelector("#comment_list")
-//     console.log(comment_form)
-//     let formData = new FormData(comment_form)
-//     fetch('/api/coffeegonewild/add_comment', {
-//         method: 'post',
-//         body: formData
-//     })
-//     .then(res => {
-//         if (res.status==200){
-//             let data = res.json()
-//             console.log(data)
-//             comment_list.innerHTML += `
-//             <li>${data.user_name} said: ${data.form.content}</li>
-//             `    
-//             comment_form.reset()
-            
-//         }
-//         else {
-//             // comment_list.innerHTML += `
-//             // <li>Please register! </li>
-//             // `    
-//             comment_form.reset()
-//             redirect('/coffeegonewild')
-//         }
-//         })
-//     .catch(err => console.log(err))
-// }

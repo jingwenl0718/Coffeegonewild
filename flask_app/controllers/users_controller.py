@@ -7,10 +7,6 @@ bcrypt = Bcrypt(app)
 
 @app.route("/coffeegonewild")
 def index():
-    # val = session.pop('list_of_recipe_ids')
-    # print(session)
-    # if "user_id" in session:
-    #     return redirect('/welcome')
     return render_template("splash.html")
 
 @app.route("/coffeegonewild/home")
@@ -29,12 +25,10 @@ def create():
     if not User.validate(request.form):
         return redirect('/coffeegonewild/register')
     hashed_pw = bcrypt.generate_password_hash(request.form['password']) 
-    # print(hashed_pw)
     data = {
         **request.form,
         'password': hashed_pw
     }
-    # session.clear()
     session['user_id'] = User.create(data)
     session['user_name'] = request.form['user_name']
     return redirect("/coffeegonewild" )
@@ -50,8 +44,7 @@ def login():
     data = {
         'user_name': request.form['user_name']
     }
-    user_from_db = User.get_by_user_name(data) #user_from_db will either hold a user or a value of false
-    # print(user_from_db.first_name)
+    user_from_db = User.get_by_user_name(data)
     if not user_from_db:
         flash("Invalid Credentials", "log")
         return redirect('/coffeegonewild/login_form')

@@ -26,20 +26,8 @@ class Recipe:
         all_recipes = []
         for row_from_db in results:
             recipe_instance = cls(row_from_db)
-            # print(recipe_instance.image_link)
             all_recipes.append(recipe_instance)
         return all_recipes
-    
-    # # READ ONE METHOD
-    # @classmethod
-    # def get_one(cls, data):
-    #     query = "SELECT * FROM recipes where recipes.id = %(id)s"
-    #     results = connectToMySQL(DATABASE).query_db(query, data)
-    #     # if len(results) < 1:
-    #     #     return False
-    #     # else: 
-    #     recipe_instance = cls(results[0])
-    #     return recipe_instance
     
     # READ ONE METHOD
     @classmethod
@@ -52,8 +40,6 @@ class Recipe:
             recipe_instance = cls(results[0])
             all_comments = []
             for row in results:
-                # if not row['content']:
-                #     continue
                 if row['content']:
                     comment_data = {
                         **row,
@@ -90,7 +76,14 @@ class Recipe:
                 list_of_recipe_ids.append(row['id'])
             print(list_of_recipe_ids)
             return list_of_recipe_ids
-        
+    
+    # get the average score of the comments and total comment count for this recipe
+    @classmethod
+    def calculate_avg_count(cls, data):
+        query = "SELECT COALESCE(avg(rating), 0) as avg_rating, count(rating) as review_count FROM coffeegonewild.comments where recipe_id= %(id)s;"
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        return results
+
     # Validator
     @staticmethod
     def validate(data):
@@ -106,4 +99,3 @@ class Recipe:
         if is_valid == False:
             flash('All fields required', 'reg')
         return is_valid
-

@@ -5,43 +5,17 @@ from flask_app.models.user_model import User
 from flask_app.models.recipe_model import Recipe
 from flask_app.models.comment_model import Comment
 
-# @app.route("/api/coffeegonewild/check_comment_user", methods=["POST"])
-# def api_create_comment():
-#     # print(request.form)
-#     if not "user_id" in session:
-#         # return redirect('/coffeegonewild/login_form')
-#         # return render_template("login.html")
-#         # return redirect("/coffeegonewild" )
-#         # res = {}
-#         return dict()
-    
-#     data = {
-#         'content': request.form['content'],
-#         'user_id': session['user_id'],
-#         'recipe_id': session['recipe_id']
-#     }
-#     Comment.create(data)
-#     res = {
-#         'msg': 'success',
-#         'form': data,
-#         'user_name': session['user_name']
-#     }
-#     return jsonify(res)
-
-
-
 @app.route("/api/coffeegonewild/add_comment", methods=["POST"])
 def api_create_comment():
     if not "user_id" in session:
-        return redirect('/coffeegonewild/login_form')
-        # return render_template("login.html")
-        # return redirect("/coffeegonewild" )
-        # return ValueError('no user id yet!')
+        no_user_res = {
+            'msg': 'NoUserError',
+        }
+        return jsonify(no_user_res)
     data = {
         'name': request.form['name'],
         'content': request.form['content'],
         'rating': request.form['rating'],
-        # 'created_at': request.form['created_at'],
         'user_id': session['user_id'],
         'recipe_id': session['recipe_id']
     }

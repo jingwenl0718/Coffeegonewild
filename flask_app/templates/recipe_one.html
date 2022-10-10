@@ -11,14 +11,14 @@
 <body>
     <!-- logo -->
     <div class="row">
-        <a href="/coffeegonewild/home" class = "my-1 mx-auto"><img id = "logo" src="/static/images/logo.png" alt="image_of_logo"></a>
+        <a href="/coffeegonewild/home" class = "my-1 mx-auto"><img id = "logo" src="/static/img/logo.png" alt="image_of_logo"></a>
     </div>
 
     <!-- header/nav-bar -->
     <div class="navbar mx-auto my-0 col-8 d-flex justify-content-between">
         <div>
             <a class="navbar_index mr-5" href="/coffeegonewild/all_recipes">Show All Recipes</a>
-            <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="/static/images/search_icon.png" /></a>
+            <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="/static/img/search_icon.png" /></a>
         </div>
         {% if "user_id" not in session %}
         <div class="d-flex flex-row-reverse navbar_right">
@@ -33,16 +33,14 @@
         {% endif %}
         
     </div>
-   
 
     <!-- body -->
     <div class="recipe_one_body">
         <hr>
         <div class="d-flex justify-content-start mt-3 align-items-center">
-            <h2 class="mr-4 recipe_title">{{recipe.title}}</h2>
-            <img id="rating" src="/static/img/rating.png" alt="rating">
-            <h5 class="ml-2"> | </h5>
-            <h6 class="ml-3">REVIEWS</h6>
+            <h2 class="mr-5 recipe_title">{{recipe.title}}</h2>
+            <div id="starbackground"><div style="width: calc(20% * {{avg_rating}}); background-color: gold"><img id="star-rating" src="/static/img/stars.png" alt="{{avg_rating}}"/></div></div>
+            <div class="ml-3 font-weight-bold">{{review_count}} REVIEWS</div>
         </div>
         <div class="d-flex">
             <img class="my-3 recipe_image2" src="{{recipe.image_link}}" alt="recipe image">
@@ -53,24 +51,30 @@
             <h3 class="text-center mb-3 comment_title"><img class="mr-3" id="coffeeCupIcon" src="/static/img/coffeeCupIcon.png" alt="coffee cup icon"/>Other Coffee Enthusiasts Have Said <img class="ml-2" id="coffeeCupIcon" src="/static/img/coffeeCupIcon.png" alt="coffee cup icon"/></h3>
             <div>
                 <ul class="list-unstyled" id="comment_list">
-                     {% for comment in recipe.list_of_comments %}
+                    {% for comment in recipe.list_of_comments %}
                     <li>
-                        <span>{{comment.rating}}</span>
-                        <span id="comment_date">{{comment.created_at.strftime('%m/%d/%Y')}}</span><br/>
+                        <div class="d-flex">
+                            <div class="mr-3" id="starbackground"><div style="width: calc(20% * {{comment.rating}}); background-color: gold"><img id="star-rating" src="/static/img/stars.png" alt="{{comment.rating}}" title="{{comment.rating}}"/></div></div>                        
+                            <span id="comment_date">{{comment.created_at.strftime('%m/%d/%Y')}}</span>
+                        </div>
+                        
                         <span id="comment_name">{{comment.name}}</span><br/>
                         <span id="comment_content">{{comment.content}}</span><br/>
                         <span id="posted_by">Posted by </span><span id="commenter_name">{{comment.commenter.user_name}}</span>
                         <hr>
-                     </li>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
+            {% for message in get_flashed_messages(category_filter=['reg']) %}
+            <p class="text-danger">{{message}}</p>
+            {% endfor %}
             <form class="form mt-3" onsubmit="add_comment(event)" id="add_form">
-                <label class="form-label h5 review_form" for="name">Title:</label>
+                <label class="form-label h5" for="name">Title:</label>
                 <input type="text" class="form-control" name="name"></input>
-                <label class="form-label h5 mt-3 review_form" for="content">Description:</label>
-                <textarea class="form-control" name="content"></textarea>
-                <label class="form-label h5 mt-3 review_form" for="rating">Rating: </label>
+                <label class="form-label h5 mt-3" for="content">Description:</label>
+                <textarea rows="6" class="form-control descripton-box" name="content"></textarea>
+                <label class="form-label h5 mt-3" for="rating">Rating: </label>
                 <div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="rating" id="inlineCheckbox1" value="1">

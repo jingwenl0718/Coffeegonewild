@@ -10,13 +10,13 @@
 </head>
 <body>
     <div class="row">
-        <img class = "my-1 mx-auto" id = "logo" src="../static/images/logo.png" alt="image_of_logo">
+        <img class = "my-1 mx-auto" id = "logo" src="../static/img/logo.png" alt="image_of_logo">
     </div>
     <div class="row">
         <div class="navbar mx-auto my-0 col-8 d-flex justify-content-between">
             <div>
                 <a class="navbar_index mr-5" href="/coffeegonewild/all_recipes">Show All Recipes</a>
-                <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="../static/images/search_icon.png" /></a>
+                <a class="navbar_index" href="/coffeegonewild/search">Search <img id="icon" src="../static/img/search_icon.png" /></a>
             </div>
             {% if "user_id" not in session %}
             <div class="d-flex flex-row-reverse navbar_right">
@@ -33,23 +33,13 @@
     </div>
     <div class="row">
         <div class="mx-auto index_video"> <a id="myVideoTag"> </a>
-            <!-- <video class="mx-auto" src="../static/videos/frenchpress.mp4" type="video/mp4" autoplay loop muted></video>
-            <scipt type="text/javascipt">
-                const videos =["../static/videos/frenchpress.mp4", "../static/videos/marshmellocoffee.mp4", "../static/videos/espressoart.mp4", "../static/videos/pourover.mp4"]
-                const randomNumber = Math.floor(Math.random() * videos.length)
-                const currentVideo = videos[ randomNumber ]
-                const videoElement = document.getElementById('video');
-                videoElement.src = currentVideo
-                videoElement.play()
-            </scipt>  -->
             <script>
                 //# generate random number
-                var number = Math.floor(Math.random() * 4) + 1;
+                var number = Math.floor(Math.random() * 8) + 1;
                 var mySrc = "../static/random-videos/Video-" + number + ".mp4";
                 
                 //# create video element to append into above <a> tag           
                 tmpElement = document.createElement( "video");
-                // tmpElement.setAttribute("controls", "true" );
                 tmpElement.setAttribute("muted", true);
                 tmpElement.setAttribute("width", "950px");
                 tmpElement.setAttribute("src", mySrc);

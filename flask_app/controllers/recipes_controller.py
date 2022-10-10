@@ -1,28 +1,30 @@
 from dataclasses import dataclass
 from flask_app import app
-from flask import render_template, redirect, request, flash, session
+from flask import render_template, redirect, request, session
 from flask_app.models.user_model import User
 from flask_app.models.recipe_model import Recipe
 
 # READ ALL ROUTE
 @app.route("/coffeegonewild/all_recipes")
 def all_recipes():
-    # call the get all classmethod to get all friends
     all_recipes = Recipe.get_all()
-    # print(all_recipes)
     return render_template("recipes_all.html", all_recipes = all_recipes)
 
 # READ ONE
 @app.route("/coffeegonewild/viewrecipe/<int:id>")
 def view_recipe(id):
-    # if not "user_id" in session:
-    #     return redirect('/')
     data = {
         'id': id
     }
     session['recipe_id'] = id
     recipe = Recipe.get_one(data)
-    return render_template("recipe_one.html", recipe = recipe)
+    average_count = Recipe.calculate_avg_count(data)
+    if average_count:
+        avg_rating = average_count[0].get('avg_rating', 0)
+        review_count = average_count[0].get('review_count', 0)
+    else:
+        avg_rating, review_count = 0, 0 
+    return render_template("recipe_one.html", recipe = recipe, avg_rating=avg_rating, review_count=review_count)
 
 # SEARCH 
 # to render the search form
@@ -35,7 +37,7 @@ def serach_for_recipe():
 def search():
     print(request.form)
     session.clear()
-    if not Recipe.validate(request.form): #need to add the validator
+    if not Recipe.validate(request.form):
         return redirect("/coffeegonewild/search")
     list_of_recipe_ids = Recipe.search(request.form)
     print(list_of_recipe_ids)
@@ -55,13 +57,4 @@ def serach_result():
         recipe = Recipe.get_one(data)
         recipes.append(recipe)
         print(recipes)
-        # session.pop(['list_of_recipe_ids'])
     return render_template('recipes_list.html', recipes = recipes)
-
-# # COMMENT
-# @app.route('/coffeegonewild/add_comment', methods=['POST'])
-# def add_comment():
-#     if not "user_id" in session:
-#         return redirect('login.html')
-    
-    

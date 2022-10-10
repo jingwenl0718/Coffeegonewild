@@ -2,7 +2,6 @@
 	vertical-align: baseline;
 	font-weight: inherit;
 	font-family: sans-serif;
-	/* font-style: inherit; */
 	font-size: 100%;
 	border: 0 none;
 	outline: 0;
@@ -43,24 +42,16 @@
 	color: #905f41
 }
 
-/* .serach_header {
-	text-align: center;
-} */
-
-/* #comment_list {
-	list-style-type: none;
-} */
-
-.footer {
-	color: grey;
-}
-
 .index_bottom_button {
 	font-size: 22px;
 }
 
 #coffeeCupIcon {
-    height: 28px;
+	height: 28px;
+}
+
+.footer {
+	color: grey;
 }
 
 /* recipes_all.html */
@@ -71,7 +62,7 @@
     box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
     transition: transform 100ms ease-in;
     cursor: pointer;
-    width: 30%;
+    width: 34%;
 }
 .recipe_card:hover{
     transform: scale(1.07);
@@ -80,7 +71,7 @@
 .recipe_image {
     object-fit: fill;
     min-width: 200px;
-    min-height: 300px;
+    min-height: 350px;
     width:100%;
     height: 200px;
 }
@@ -89,7 +80,6 @@
     font-size: 1.2em;
     font-weight: 600;
     color: #be3c5a;
-
 }
 
 .recipe_card > h4{
@@ -100,8 +90,7 @@
     color: #be3c5a;
 }
 
-
-/* ------recipe_one.html------ */
+/* recipe_one.html */
 .recipe_one_body{
 	padding: 0px 180px;
 }
@@ -116,10 +105,9 @@
 	height: auto;
 }
 
-
-#rating {
+/* #rating {
 	width: 200px;
-}
+} */
 
 .recipe_description {
 	margin-top: 40px;
@@ -142,7 +130,6 @@
 #comment_name {
 	font-size: 22px;
 	color: black;
-	/* margin-bottom: 80px; */
 }
 
 #comment_content {
@@ -157,18 +144,9 @@
 #commenter_name {
 	font-size: 15px;
 }
-/* .comment_label {
-	font-size: larger;
-}
 
-.comment_title {
-	font-weight: heavier;
-}
-
-.comment_box {
-	border: 1px solid #905f41;
-	width: 800px;
-	height: 150px;
+/* .description-box {
+	height: 400px;
 } */
 
 .note {
@@ -178,18 +156,26 @@
 }
 
 /* star rating */
+#starbackground {
+	width: 100px;
+	line-height: 1;
+}
 
+#star-rating {
+	width: 100px;
+	height: 19px;
+}
 
 /* recipe_search.html */
 .search_form {
 	padding: 20px 20px 20px 20px
 }
 
-.search_form_button {
+/* .search_form_button {
 	height: 40px;
 	background-color: #ffc11d;
 	color: white;
-}
+} */
 
 .search_title {
 	font-weight: 500;
@@ -202,4 +188,3 @@
 .search_button {
 	color:white;
 }
-
