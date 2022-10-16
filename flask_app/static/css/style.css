@@ -105,10 +105,6 @@
 	height: auto;
 }
 
-/* #rating {
-	width: 200px;
-} */
-
 .recipe_description {
 	margin-top: 40px;
 	margin-left: 50px;
@@ -119,7 +115,6 @@
 
 .comment {
 	color: #964800;
-	/* color: #632626; */
 }
 
 #comment_date {
@@ -145,10 +140,6 @@
 	font-size: 15px;
 }
 
-/* .description-box {
-	height: 400px;
-} */
-
 .note {
 	font-weight: lighter;
 	color:#673399;
@@ -170,12 +161,6 @@
 .search_form {
 	padding: 20px 20px 20px 20px
 }
-
-/* .search_form_button {
-	height: 40px;
-	background-color: #ffc11d;
-	color: white;
-} */
 
 .search_title {
 	font-weight: 500;
