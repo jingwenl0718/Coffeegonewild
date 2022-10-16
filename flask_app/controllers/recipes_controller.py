@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models.user_model import User
@@ -35,12 +34,10 @@ def serach_for_recipe():
 # action route to get serach results
 @app.route("/coffeegonewild/Iamready", methods=['POST'])
 def search():
-    print(request.form)
     session.clear()
     if not Recipe.validate(request.form):
         return redirect("/coffeegonewild/search")
     list_of_recipe_ids = Recipe.search(request.form)
-    print(list_of_recipe_ids)
     if len(list_of_recipe_ids)<1:
         return redirect("/coffeegonewild/search")
     session['list_of_recipe_ids'] = list_of_recipe_ids
@@ -56,5 +53,4 @@ def serach_result():
         }
         recipe = Recipe.get_one(data)
         recipes.append(recipe)
-        print(recipes)
     return render_template('recipes_list.html', recipes = recipes)

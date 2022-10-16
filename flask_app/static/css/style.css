@@ -64,6 +64,7 @@
     cursor: pointer;
     width: 34%;
 }
+
 .recipe_card:hover{
     transform: scale(1.07);
 }

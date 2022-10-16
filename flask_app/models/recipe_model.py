@@ -49,7 +49,6 @@ class Recipe:
                     }
                     comment_instance = comment_model.Comment(comment_data)
                     all_comments.append(comment_instance)
-                    
                     user_data = {
                             **row,
                             'id': row['users.id'],
@@ -74,7 +73,6 @@ class Recipe:
             list_of_recipe_ids = [] 
             for row in results:
                 list_of_recipe_ids.append(row['id'])
-            print(list_of_recipe_ids)
             return list_of_recipe_ids
     
     # get the average score of the comments and total comment count for this recipe

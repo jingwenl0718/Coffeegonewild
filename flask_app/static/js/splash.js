@@ -5,7 +5,6 @@ let headlinePart = document.querySelectorAll('.headline_part');
 window.addEventListener('DOMContentLoaded', ()=>{
     
     setTimeout(()=>{
-
         headlinePart.forEach((span, idx)=>{
             setTimeout(()=> {
                 span.classList.add('active');

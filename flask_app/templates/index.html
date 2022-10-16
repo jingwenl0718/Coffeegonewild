@@ -34,19 +34,14 @@
     <div class="row">
         <div class="mx-auto index_video"> <a id="myVideoTag"> </a>
             <script>
-                //# generate random number
                 var number = Math.floor(Math.random() * 8) + 1;
                 var mySrc = "../static/random-videos/Video-" + number + ".mp4";
-                
-                //# create video element to append into above <a> tag           
                 tmpElement = document.createElement( "video");
                 tmpElement.setAttribute("muted", true);
                 tmpElement.setAttribute("width", "950px");
                 tmpElement.setAttribute("src", mySrc);
                 tmpElement.setAttribute("autoplay", true);
                 tmpElement.setAttribute("loop", true);
-                
-                //# append the dynamically created element...
                 var container = document.getElementById("myVideoTag");
                 container.appendChild(tmpElement);
             </script>
