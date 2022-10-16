@@ -34,7 +34,7 @@ def serach_for_recipe():
 # action route to get serach results
 @app.route("/coffeegonewild/Iamready", methods=['POST'])
 def search():
-    session.clear()
+    session.pop('list_of_recipe_ids', None)
     if not Recipe.validate(request.form):
         return redirect("/coffeegonewild/search")
     list_of_recipe_ids = Recipe.search(request.form)
