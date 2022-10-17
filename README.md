@@ -67,7 +67,7 @@ https://www.youtube.com/watch?v=bogAChZY-VA
    python server.py
    ```
 
-3. Open a browser and navigate to localhost:5000/coffeegonewild. 
+3. Open a browser and navigate to http://localhost:5000/coffeegonewild. 
 
 ## License
 MIT License (https://github.com/jingwenl0718/Coffeegonewild/blob/main/LICENSE.md)
